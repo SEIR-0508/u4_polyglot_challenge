@@ -13,7 +13,25 @@
 # add("peanut_butter", "marshmellow_fluff") //=> NaN
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def add_list(*num_list):
+    if not num_list:
+        return 0
+    
+    total = 0
+    for num in num_list:
+        if not isinstance(num, (int, float)):
+            return "NaN"
+        total += num
+
+    return total
+
+# print(add_list(12))
+# print(add_list(5, 30, 19.3))
+# print(add_list(7, -12))
+# print(add_list('arrow','spear','sword'))
+# print(add_list())
+
 #-----------------------------------------------
 
 
@@ -30,7 +48,16 @@
 # remove_ends('a'); //=> "" (empty string)
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def remove_ends(string):
+    if len(string) < 3:
+        return ""
+
+    return string[1:-1]
+
+# print(remove_ends('Python is cool'))
+# print(remove_ends('yo'))
+
 #-----------------------------------------------
 
 
@@ -44,12 +71,29 @@
 # - If the length of the string is 0 or 1, return true.
 # Examples:
 # is_palindrome('SEI Rocks'); //=> false
-# is_palindrome('rotor'); //=> true
-# is_palindrome('A nut for a jar of tuna'); //=> true
-# is_palindrome(''); //=> true
+# is_palindrome('rotor')
+# is_palindrome('A nut for a jar of tuna')
+# is_palindrome('')
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def is_palindrome(string):
+    if len(string) <= 1:
+        return True
+
+    string = string.lower()
+    characters = string.replace(' ', '')
+    for i in range(len(string) // 2):
+        if characters[i]!= characters[-i - 1]:
+            return False
+
+    return True
+
+# print(is_palindrome('SEI Rocks'))
+# print(is_palindrome('rotor'))
+# print(is_palindrome('A nut for a jar of tuna'))
+# print(is_palindrome(''))
+
 #-----------------------------------------------
 
 
@@ -67,7 +111,35 @@
 # is_prime(200) //=> false
 
 #-----------------------------------------------
-# Solution goes here ->
+
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+
+    return True
+
+
+prime = lambda num: num > 1 and all(num % i for i in range(2, num))
+
+# print(is_prime(2))
+# print(is_prime(3))
+# print(is_prime(4))
+# print(is_prime(29))
+# print(is_prime(200))
+
+# print(prime(2))
+# print(prime(3))
+# print(prime(4))
+# print(prime(29))
+# print(prime(200))
+
+
 #-----------------------------------------------
 
 
@@ -80,17 +152,101 @@
 # Your function should take the list and the user's homestate as arguments
 
 # shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+#     {"item": "headphones", "price": 25},
+#     {"item": "speakers", "price": 40 },
+#     {"item": "microphone", "price": 70},
+#     {"item": "lamp", "price": 15 },
+#     {"item": "tower fan", "price": 35 },
+#     ]
 
 
 #-----------------------------------------------
-# Solution Goes Here ->
+
+
+
+
+
+
+def calculate_total_cost(state, shopping_cart):
+
+    total_cost = 0
+    shipping_fee = 0
+
+    for item in shopping_cart:
+        tax = item["price"] * 0.085
+        total_cost += item["price"] + tax
+
+    if state in ["HI", "AK", "TX", "FL"]:
+        shipping_fee = 10
+    elif state in ["AL", "MS", "NV", "IL"]:
+        shipping_fee = 5
+    else:
+        shipping_fee = 0
+
+    return total_cost + shipping_fee
+
+
+def shop():
+    shopping_cart = [ 
+        {"item": "headphones", "price": 25},
+        {"item": "speakers", "price": 40 },
+        {"item": "microphone", "price": 70},
+        {"item": "lamp", "price": 15 },
+        {"item": "tower fan", "price": 35 },
+    ]
+    state = "FL"
+   
+    total_cost = calculate_total_cost(state, shopping_cart)
+    # print(f"The total cost is ${total_cost}")
+
+
+if __name__ == "__main__":
+    shop()
+
+
+################################################################ calculating cost of single item
+       
+# def calculate_total_cost(state, shopping_cart, item_index):
+
+#     total_cost = 0
+#     shipping_fee = 0
+
+#     item = shopping_cart[item_index]
+#     tax = item["price"] * 0.085
+#     total_cost += item["price"] + tax
+
+
+#     if state in ["HI", "AK", "TX", "FL"]:
+#         shipping_fee = 10
+#     elif state in ["AL", "MS", "NV", "IL"]:
+#         shipping_fee = 5
+#     else:
+#         shipping_fee = 0
+
+#     return total_cost + shipping_fee
+
+
+# def shop():
+#     shopping_cart = [ 
+#         {"item": "headphones", "price": 25},
+#         {"item": "speakers", "price": 40 },
+#         {"item": "microphone", "price": 70},
+#         {"item": "lamp", "price": 15 },
+#         {"item": "tower fan", "price": 35 },
+#     ]
+#     state = "FL"
+#     item_index = 0
+#     total_cost = calculate_total_cost(state, shopping_cart, item_index)
+#     print(f"The total cost is ${total_cost}")
+
+
+# if __name__ == "__main__":
+#     shop()
+        
+
 #-----------------------------------------------
+
+
 
 
 # Challenge 6: fizz_buzz
@@ -106,7 +262,38 @@
 # fizz_buzz(ham_sandwich) //=> "ham_sandwich is not a Number"
 
 #-----------------------------------------------
-# Solution Goes Here ->
+
+# def fizz_buzz(num):
+#     if not isinstance(num, int):
+#         return f"{num} is not a number"
+   
+#     for i in range(1, num + 1):
+#         if i % 3 == 0 and i % 5 == 0:
+#             print("FizzBuzz")
+#         elif i % 3 == 0:
+#             print("Fizz")
+#         elif i % 5 == 0:
+#             print("Buzz")
+#         else:
+#             print(str(i))
+
+def fizz_buzz(num):
+    if not isinstance(num, int):
+        return f"{num} is not a number"
+    
+    fizz_buzz_list = []
+    
+    for i in range(1, num + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            fizz_buzz_list.append("FizzBuzz")
+        elif i % 3 == 0:
+            fizz_buzz_list.append("Fizz")
+        elif i % 5 == 0:
+            fizz_buzz_list.append("Buzz")
+        else:
+            print(str(i))
+            
+# print(fizz_buzz(50))
 #-----------------------------------------------
 
 
@@ -145,5 +332,45 @@
 
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+# def chess_board(rows, columns):
+
+#     chessboard = []
+#     for row in range(rows):
+#         row_list = []
+#         start_white = "O"
+#         for column in range(columns):
+#             if row % 2 == 0:
+#                 row_list.append(start_white)
+#             else:
+#                 row_list.append("X")
+#         chessboard.append(row_list)
+
+    # return "\n".join(f"{' ' * 4}{row}" for row in chessboard)
+
+
+def chess_board(rows, columns):
+
+    chessboard = []
+    for row in range(rows):
+        row_list = []
+
+        start_white = "O" if row % 2 == 0 else "X"
+
+        for column in range(columns):
+           
+            start_black = start_white if column % 2 == 0 else "O" if start_white == "X" else "X"
+  
+            row_list.append(start_black)
+        chessboard.append(row_list)
+
+    return chessboard
+
+board1 = chess_board(6,4)
+for row in board1:
+    print(row)
+
+board1 = chess_board(3,7)
+for row in board1:
+    print(row)
 #-----------------------------------------------

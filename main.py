@@ -275,14 +275,22 @@ def chessboard(rows, cols):
     i = 0
     # create empty lists for number of rows and append to board list/array
     while counter_row < rows:
-        board_rows.append([''])
+        board_rows.append([])
         counter_row += 1
     board.append(board_rows)
     # print(board_rows)
-    if board_rows[0] == '':
-        board_rows[0].append("O")
-    else:
-        board_rows[0].append("X")
+    while counter_col < cols - 1:
+        if board_rows[i] == '':
+            board_rows[i] = "O"
+            i += 1
+        else:
+            board_rows[i] = "X"
+            i += 1
+        counter_col += 1
+    # if board_rows[0] == '': #<- WORKING
+    #     board_rows[0].append("O") #<- WORKING
+    # else: #<- WORKING
+    #     board_rows[0].append("X") #<- WORKING
     print(board)
 
     # for el in board: # of which there are 3 rn
@@ -300,18 +308,8 @@ def chessboard(rows, cols):
 
 
     # put this in a for loop; iterate through board_rows array/list
-    # print(board_rows)
 
 
-    # i = 0
-    # rows_list = []
-    # cols_list = []
-    # if rows_list == []:
-    #    rows_list.append("O")
-    # elif rows_list[-1] == "O":
-    #     rows_list.append("X")
-    # if cols_list == []:
-    #     cols_list.append
 
 chessboard(3,4)
 #-----------------------------------------------

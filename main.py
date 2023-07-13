@@ -51,6 +51,20 @@ add_list('catdog', 1, 1)
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+def remove_ends(string):
+    if len(string) < 3:
+        print("")
+    else:
+        remove_first = string.replace(string[0], "")
+        new_string = remove_first.replace(remove_first[-1], "")
+        print(new_string)
+
+remove_ends('hello')
+remove_ends('a')
+remove_ends('asdlfkajsdlf')
+
+
 #-----------------------------------------------
 
 

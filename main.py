@@ -253,4 +253,36 @@ fizz_buzz()
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# each row is its own list
+# each column is an element
+
+def chessboard(rows, cols):
+    # if first row -> start w/ O
+    # else -> alternate row start w/ X and O
+    # for num of cols -> alternate X and O
+    # if first el is X -> next return O 
+    # if first el is O -> next return X 
+
+    # rows argument -> create X (empty) lists to be elements in overall / nested in BOARD list
+    # if rows = 3 -> create 3 new (empty) lists
+    
+    row_counter = 0
+    while row_counter <= rows:
+        # something
+        
+        row_counter += 1
+
+
+    i = 0
+    rows_list = []
+    cols_list = []
+    if rows_list == []:
+       rows_list.append("O")
+    elif rows_list[-1] == "O":
+        rows_list.append("X")
+    if cols_list == []:
+        cols_list.append
+
+chessboard(3,4)
 #-----------------------------------------------

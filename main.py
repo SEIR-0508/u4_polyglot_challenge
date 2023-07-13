@@ -16,8 +16,17 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
+def add_list(*num):
+    total = 0
+    for my_num in num:
+        if (isinstance(my_num, (int, float))):
+            total += my_num
+        else:
+            return('NaN')
+    return(total)
 
-
+# result = add_list(1,2,3,4,5,'not')
+# print(result)
 
 # Challenge 2: remove_ends
 
@@ -32,8 +41,14 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
-
-
+def remove_ends(my_str):
+    if len(my_str) < 3:
+        print(' ')
+    else:
+        new_str = my_str[1:-1]
+        print(new_str)
+        
+# remove_ends('I removed the ends of this string')        
 
 # Challenge 3: is_palindrome
 
@@ -52,7 +67,16 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
+def is_palindrome(my_str):
+    my_str = my_str.lower()
+    new_str = my_str.replace(" ", "")
+    rev_str = new_str[::-1]
+    if rev_str == new_str:
+        print(True)
+    else:
+        print(False)
 
+# is_palindrome('A nut for a jar of tuna')
 
 # Challenge 4: is_prime
 
@@ -70,7 +94,18 @@
 # Solution goes here ->
 #-----------------------------------------------
 
+def is_prime(num1):
+    if num1 == 1:
+        print(False)
+    elif num1 > 1:
+        for i in range(2, num1):
+            if (num1 % i) == 0:
+                print(False)
+                break
+        else:
+            print(True)
 
+# is_prime(5)
 
 
 # Challenge 5: total_checkout_cost
@@ -79,18 +114,35 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
 #-----------------------------------------------
+
+def checkout_cost(list, state):
+    total = 0
+    for item in list:
+        tax = int(item['price']) * .085
+        total += int(item['price']) + tax
+    if state == 'HI' or state == 'AK' or state == 'TX' or state == "FL":
+        total += 10
+    elif state == 'AL' or state == 'MS' or state == 'NV' or state == "IL":
+        total += 5
+    else:
+        total
+
+    print(total)
+
+# checkout_cost(shopping_cart, 'MA')
+
 
 
 # Challenge 6: fizz_buzz
@@ -109,8 +161,23 @@
 # Solution Goes Here ->
 #-----------------------------------------------
 
+def fizz_buzz(num, fizz, buzz):
+    my_list = []
+    if type(num) is int:
+        for x in range(1,num):
+            if x % fizz == 0 and x % buzz == 0:
+                my_list.append('FizzBuzz')
+            elif x % fizz == 0:
+                my_list.append('Fizz')
+            elif x % buzz == 0:
+                my_list.append("Buzz")
+            else:
+                my_list.append(x)
+        print(my_list)
+    else:
+        print(num, "is not a number")
 
-
+# fizz_buzz(50, 3, 5)
 
 # Challenge 7 - Chessboard Creator
 
@@ -147,3 +214,19 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
+
+def checkerboard(row_num, col_num):
+    board = []
+
+    for row in range(row_num):
+        cur_row = []
+        for col in range(col_num):
+            if (row + col) % 2 == 0:
+                cur_row.append('O')
+            else:
+                cur_row.append('X')
+
+        board.append(cur_row)
+    print(*board, sep='\n')
+
+# checkerboard(8, 5)

@@ -100,11 +100,11 @@ def is_palindrome(string):
         else:
             print('false')
 
-is_palindrome('hello')
-is_palindrome('a')
-is_palindrome('RadAr')
-is_palindrome('Ra dAr')
-is_palindrome('A nut for a jar of tuna')
+# is_palindrome('hello')
+# is_palindrome('a')
+# is_palindrome('RadAr')
+# is_palindrome('Ra dAr')
+# is_palindrome('A nut for a jar of tuna')
 
 #-----------------------------------------------
 
@@ -124,6 +124,26 @@ is_palindrome('A nut for a jar of tuna')
 
 #-----------------------------------------------
 # Solution goes here ->
+
+# evenly divisible -> NOT a FLOAT -> int
+
+def is_prime(num):
+    int(num)
+    counter = 0
+    if num >1 and num % num == 0:
+        counter += 1
+        if num % counter == 0:
+            print('false')
+        else:
+            print('true')
+    else:
+        print('false')
+
+# is_prime(3)
+# is_prime(200)
+
+
+
 #-----------------------------------------------
 
 
@@ -135,17 +155,34 @@ is_palindrome('A nut for a jar of tuna')
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
-
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def total_cost(cart, state):
+    subtotal = 0
+    if state in ['HI', 'AK', 'TX', 'FL']:
+        shipping_fee = 10
+    elif state in ['AL', 'MS', 'NV', 'IL']:
+        shipping_fee = 5
+    else:
+        shipping_fee = 0
+    for item in cart:
+        subtotal += item["price"]
+    total = subtotal + shipping_fee
+    print(total)
+
+total_cost(shopping_cart, 'HI')
+total_cost(shopping_cart, 'CT')
+total_cost(shopping_cart, 'AL')
+
 #-----------------------------------------------
 
 

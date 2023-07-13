@@ -14,6 +14,19 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def add_list(*nums): 
+    if len(nums) == 0: 
+        return 0
+    
+    total = 0 
+    for num in nums: 
+        if not isinstance(num, (int, float)):
+            return "NaN"
+        total += num
+    return total
+
+print(add_list("marshmellow", "peanuts"))
+print(add_list(5, 3))
 #-----------------------------------------------
 
 
@@ -31,6 +44,12 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def remove_ends(str): 
+    if len(str) < 3: 
+        return "you're left with nothing"
+    return str[1:-1]
+
+print(remove_ends("Chris"))
 #-----------------------------------------------
 
 
@@ -50,6 +69,11 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def is_palindrome(str):
+    return str == str[::-1]
+
+print(is_palindrome('racecar')) 
+print(is_palindrome('car')) 
 #-----------------------------------------------
 
 
@@ -68,6 +92,17 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+def is_prime(num): 
+    if num == isinstance(num, int):  
+        return True
+    elif num > 0: 
+        return True
+    elif (num / num) == 0:
+        return True
+    else: 
+        return False
+    
+print(is_prime(2))
 #-----------------------------------------------
 
 
@@ -79,17 +114,38 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def total_checkout_cost(shopping_cart, home_state):
+    tax_rate = .0825
+
+    subtotal = sum(item["price"] for item in shopping_cart)
+
+    tax_owed = subtotal * tax_rate
+
+    shipping = 0 
+    if home_state in ["Hi", "Ak", "Tx", "Fl"]:
+        shipping = 10
+    elif home_state in ["Al", "Ms", "Nv", "Il"]:
+        shipping = 5
+        
+
+    total = subtotal + tax_owed + shipping
+    return total
+
+home_state = "Tx"
+total_cost = total_checkout_cost(shopping_cart, home_state)
+print("Total Cost: ", total_cost)
+    
 #-----------------------------------------------
 
 
@@ -107,6 +163,23 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def fizz_buzz(num): 
+    if not isinstance(num, int):
+        return "NaN"
+    
+    if num % 3 == 0 and num % 5 == 0: 
+        return str(num) + " FizzBuzz"
+    elif num % 3 == 0: 
+        return str(num) + " Fizz"
+    elif num % 5 == 0: 
+        return str(num) + " Buzz"
+    else: 
+        return str(num)
+    
+print(fizz_buzz(15))
+print(fizz_buzz(6))
+print(fizz_buzz(10))
+print(fizz_buzz(2))
 #-----------------------------------------------
 
 
@@ -146,4 +219,19 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def chess_board(rows, columns): 
+    board = []
+
+    for el in range(rows): 
+        row = []
+        for i in range(columns): 
+            if (el + i) % 2 == 0: 
+                row.append("O")
+            else: 
+                row.append("X")
+
+        board.append(row)
+    return board
+
+print(chess_board(4, 6))
 #-----------------------------------------------

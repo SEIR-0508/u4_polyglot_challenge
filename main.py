@@ -179,9 +179,9 @@ def total_cost(cart, state):
     total = subtotal + shipping_fee
     print(total)
 
-total_cost(shopping_cart, 'HI')
-total_cost(shopping_cart, 'CT')
-total_cost(shopping_cart, 'AL')
+# total_cost(shopping_cart, 'HI')
+# total_cost(shopping_cart, 'CT')
+# total_cost(shopping_cart, 'AL')
 
 #-----------------------------------------------
 
@@ -200,6 +200,20 @@ total_cost(shopping_cart, 'AL')
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def fizz_buzz():
+    nums = range(1, 51, 1)
+    for num in nums:
+        if num % 3 == 0 and num % 5 == 0:
+            print('fizzbuzz')
+        elif num % 3 == 0:
+            print('fizz')
+        elif num % 5 == 0:
+            print('buzz')
+        else:
+            print(num)
+fizz_buzz()
+
 #-----------------------------------------------
 
 

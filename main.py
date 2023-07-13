@@ -14,6 +14,26 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+### resource used: https://www.geeksforgeeks.org/args-kwargs-python/
+
+def add_list(*nums):
+    sum = 0
+    if nums != '':
+        for num in nums:
+            if type(num) != int:
+                print('NaN')
+            else:
+                sum += num
+        print(sum)
+    else:
+        print('0')
+
+add_list(1, 2, 3, 1)
+add_list(1, 2, 3, 1, 10)
+add_list()
+add_list('catdog', 1, 1)
+
 #-----------------------------------------------
 
 

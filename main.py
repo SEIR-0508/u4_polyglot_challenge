@@ -16,7 +16,20 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
+def add_list(*nums):
+    if not nums:
+        return 0
+    
+    total = 0
+    for num in nums:
+            if not (isinstance(num, int) or isinstance(num, float)):
+                 return "NaN"
+            total += num
+    return total
+    
 
+print(add_list(3,43,43,53))
+print(add_list(3,42.54,24,54235,664))
 
 
 # Challenge 2: remove_ends
@@ -33,6 +46,13 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
+def remove_ends(string):
+    if len(string) < 3:
+          return ''
+    new_string = string[1:-1]
+    return new_string
+     
+print(remove_ends('abc'))
 
 
 # Challenge 3: is_palindrome
@@ -52,7 +72,20 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
-
+def is_palindrome(string):
+    space_to_remove = " "
+    new_string = ""
+    for char in string:
+         if char != space_to_remove:
+              new_string += char
+    reversed_string = new_string[::-1]
+    if reversed_string.lower() == new_string.lower():
+         return True
+    if reversed_string.lower() != new_string.lower():
+         return False
+    
+print(is_palindrome('A nut for a jar of tuna'))
+     
 
 # Challenge 4: is_prime
 
@@ -70,7 +103,31 @@
 # Solution goes here ->
 #-----------------------------------------------
 
-
+def is_prime(num):
+    int(num)
+    if num <= 1:
+         return 'Not Prime'
+    if num == 2 or num == 3 or num == 5 or num == 7:
+        return 'Prime'
+    if num % 2 == 0:
+        return 'Not Prime'
+    if num % 3 == 0:
+        return 'Not Prime'
+    if num % 5 == 0:
+        return 'Not Prime'
+    if num % 7 == 0:
+        return 'Not Prime'
+    else:
+        return 'Prime'
+    
+print(is_prime(2))
+print(is_prime(3))
+print(is_prime(4))
+print(is_prime(29))
+print(is_prime(200))
+print(is_prime(79))
+print(is_prime(83))
+    
 
 
 # Challenge 5: total_checkout_cost
@@ -79,18 +136,45 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
 #-----------------------------------------------
+
+def calculate_total(list, homestate):
+    high_shipping_cost_states = ['HI', 'AK', 'TX', 'FL']
+    low_shipping_cost_states = ['AL', 'MS', 'NV', 'IL']
+    sales_tax = 0.085
+    item_total = 0
+    cart_total = 0
+    for item in list:
+        item_price = item["price"]
+        item_tax = item_price * sales_tax
+        item_total = item_price + item_tax
+        cart_total += item_total
+
+    if homestate in high_shipping_cost_states:
+        final_total = cart_total + 10
+        rounded_total = round(final_total, 2)
+        return f'${rounded_total}'
+    elif homestate in low_shipping_cost_states:
+        final_total = cart_total + 5
+        rounded_total = round(final_total, 2)
+        return f'${rounded_total}'
+    else:
+        final_total = cart_total
+        rounded_total = round(final_total, 2)
+        return f'${rounded_total}'
+
+print(calculate_total(shopping_cart, 'HI'))
 
 
 # Challenge 6: fizz_buzz
@@ -109,6 +193,39 @@
 # Solution Goes Here ->
 #-----------------------------------------------
 
+def fizz_buzz_check(num):
+    if not (isinstance(num, int)):
+        return f"{num} is not a number."
+    if num % 3 == 0 and num % 5 == 0:
+        return print('FizzBuzz')
+    elif num % 3 == 0:
+        return print('Fizz')
+    elif num % 5 == 0:
+        return print('Buzz')
+    else:
+        return print('')
+
+print(fizz_buzz_check(10))
+print(fizz_buzz_check(30))
+print(fizz_buzz_check(18))
+print(fizz_buzz_check(22))
+print(fizz_buzz_check('ham_sandwich'))
+
+def fizz_buzz_loop():
+    counter = 1
+
+    while counter < 51:
+        if counter % 3 == 0 and counter % 5 == 0:
+            print('FizzBuzz')
+        elif counter % 3 == 0:
+            print('Fizz')
+        elif counter % 5 == 0:
+            print('Buzz')
+        else:
+            print(counter)
+        counter += 1
+
+# fizz_buzz_loop()
 
 
 
@@ -147,3 +264,21 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
+
+def grid_generator(rows, columns):
+    board = []
+
+    for y in range(rows):
+        row = []
+        for x in range(0, columns):
+            if (x + y) % 2 == 0:
+                row.append('O')
+            else:
+                row.append('X')
+        board.append(row)
+
+    return board
+        
+
+print(grid_generator(4, 6))
+print(grid_generator(3, 7))

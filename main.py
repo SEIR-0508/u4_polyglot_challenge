@@ -6,6 +6,11 @@
 # - If any non-number arguments are in the argument, return "NaN"
 
 
+            
+
+
+
+
 # Examples:
 # add(1) //=> 1
 # add(1,50,1.23) //=> 52.23
@@ -14,6 +19,15 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def add_list(list=[0]):
+    for num in list:
+        if not isinstance(num, (int, float)):
+            return "NaN"
+        else:
+            return sum(list)
+            print(sum(list))
+        
+print(add_list([2, 56,78]))
 #-----------------------------------------------
 
 
@@ -31,6 +45,15 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def remove_ends(string):
+    if len(string) < 3:
+        print(" ")
+        return ""
+    else:
+       print(string[1:-1])
+       return string[1:-1]
+    
+remove_ends("Hi")
 #-----------------------------------------------
 
 
@@ -50,6 +73,16 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def is_palindrome(string):
+    if string == string[::-1]:
+        print(f'{string} is a palindrome!')
+        return True 
+    else: 
+        print(f'{string} is not a palindrome!')
+        return False
+        
+
+is_palindrome("margaret")
 #-----------------------------------------------
 
 
@@ -68,6 +101,18 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+def is_prime(num):
+    if num < 2:
+        print(f'{num} is not a prime number.')
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            print(f'{num} is not a prime number.')
+            return False
+    print(f'{num} is a prime number!')
+    return True
+
+is_prime(10)
 #-----------------------------------------------
 
 
@@ -79,17 +124,32 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def calculate_cost(list, state):
+    total_price = 0
+    for item in list:
+        total_price += ((item["price"]) + (item["price"]*0.085))
+    if state == "HI" or state == "AK" or state == "TX" or state == "FL":
+        total_price += 10
+        return round(total_price, 2)
+    elif state == "AL" or state== "MS" or state == "NV" or state == "IL":
+        total_price += 5
+        return round(total_price, 2)
+    else:
+        return round(total_price, 2)
+    
+print(calculate_cost(shopping_cart, "TX"))
+
 #-----------------------------------------------
 
 
@@ -107,6 +167,18 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def fizz_buzz(num):
+    if num % 3 == 0 and num % 5== 0:
+        print("FizzBuzz")
+    elif num % 3 == 0:
+        print("Fizz")
+    elif num % 5 == 0:
+        print("Buzz")
+    else:
+        print(num)
+
+fizz_buzz(5)
 #-----------------------------------------------
 
 
@@ -146,4 +218,12 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def chess_board(rows, cols):
+    chessboard = [["X" if (row + col) % 2 == 0 else "O" for col in range(cols)] for row in range(rows)]
+    for row in chessboard:
+        print(' '.join(row))
+    
+chess_board(5, 6)
+
+
 #-----------------------------------------------

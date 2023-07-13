@@ -56,9 +56,14 @@ def remove_ends(string):
     if len(string) < 3:
         print("")
     else:
-        remove_first = string.replace(string[0], "")
-        new_string = remove_first.replace(remove_first[-1], "")
-        print(new_string)
+        ### first attempt at solution:
+        # remove_first = string.replace(string[0], "")
+        # new_string = remove_first.replace(remove_first[-1], "")
+        # print(new_string)
+
+        ### better solution:
+        print(string[1:-1])
+        ### resource used: https://www.w3schools.com/python/gloss_python_string_slice.asp
 
 remove_ends('hello')
 remove_ends('a')
@@ -84,6 +89,10 @@ remove_ends('asdlfkajsdlf')
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# def is_palindrome(string):
+#     reverse = string.reverse()
+
 #-----------------------------------------------
 
 

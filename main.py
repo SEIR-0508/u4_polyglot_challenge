@@ -29,10 +29,10 @@ def add_list(*nums):
     else:
         print('0')
 
-add_list(1, 2, 3, 1)
-add_list(1, 2, 3, 1, 10)
-add_list()
-add_list('catdog', 1, 1)
+# add_list(1, 2, 3, 1)
+# add_list(1, 2, 3, 1, 10)
+# add_list()
+# add_list('catdog', 1, 1)
 
 #-----------------------------------------------
 
@@ -65,9 +65,9 @@ def remove_ends(string):
         print(string[1:-1])
         ### resource used: https://www.w3schools.com/python/gloss_python_string_slice.asp
 
-remove_ends('hello')
-remove_ends('a')
-remove_ends('asdlfkajsdlf')
+# remove_ends('hello')
+# remove_ends('a')
+# remove_ends('asdlfkajsdlf')
 
 
 #-----------------------------------------------
@@ -90,8 +90,21 @@ remove_ends('asdlfkajsdlf')
 #-----------------------------------------------
 # Solution Goes Here - >
 
-# def is_palindrome(string):
-#     reverse = string.reverse()
+def is_palindrome(string):
+    if len(string) <= 1:
+        print('true')
+    else:
+        reverse = string[::-1] # <-- string[start : end : step]
+        if reverse.lower().replace(" ","") == string.lower().replace(" ",""):
+            print('true')
+        else:
+            print('false')
+
+is_palindrome('hello')
+is_palindrome('a')
+is_palindrome('RadAr')
+is_palindrome('Ra dAr')
+is_palindrome('A nut for a jar of tuna')
 
 #-----------------------------------------------
 

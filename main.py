@@ -14,9 +14,24 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def add_list(*nums):
+    sum = 0
+    num_list = []
+    NaN = False
+    for num in nums:
+        if type(num) == int or type(num) == float:
+            num_list.append(num)
+        else:
+            NaN = True
+    for num in num_list:
+        sum = sum + num
+    if not NaN:
+        print(sum)
+    else:
+        print('NaN')
+
+add_list(1,2,4.3)
 #-----------------------------------------------
-
-
 
 
 # Challenge 2: remove_ends
@@ -31,6 +46,15 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def remove_ends(string):
+    if type(string) == str and len(string) > 2:
+        string = string[slice(1,-1)]
+    else:
+        string = ''
+    print(string)
+
+    # string.remove(string[-1])
+remove_ends('okie dokie')
 #-----------------------------------------------
 
 
@@ -50,6 +74,20 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def is_palindrome(string):
+    if type(string) == str:
+        if len(string) > 1:
+            string = string.lower()
+            if string == string[::-1]:
+                print(True)
+            else:
+                print(False)
+        else:
+            print(True)
+    else:
+        print('Not a string')
+
+is_palindrome(True)
 #-----------------------------------------------
 
 
@@ -68,6 +106,27 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+def is_prime(num):
+    prime = True
+    test_digits = [2,3,4,5,6,7,8,9]
+    if type(num) == int:
+        if num == 1 or num == 2 or num == 3 or num == 5 or num == 7:
+            prime = True
+        elif num == 4 or num == 6 or num == 8 or num == 9:
+            prime = False
+        else:
+            for digit in test_digits:
+                result = num/digit
+                test_result = str(result)
+                if '.0' in test_result:
+                    prime = False
+                    continue
+                else:
+                   x = 1
+    else:
+        prime = 'Not an integer'
+    print(prime)
+is_prime(17)
 #-----------------------------------------------
 
 
@@ -79,17 +138,33 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def total_checkout_cost(list,homestate):
+    sum = 0
+    for item in list:
+        sum += item['price']
+    sum *= 1.085
+    if homestate == 'HI' or homestate == 'AK' or homestate == 'TX' or homestate == 'FL':
+        sum += 10
+        total_cost = sum
+    elif homestate == 'AL' or homestate == 'MS' or homestate == 'NV' or homestate == 'IL':
+        sum += 5
+        total_cost = sum
+    else:
+        total_cost = sum
+    print(f'Your total cost is {total_cost}')
+    
+total_checkout_cost(shopping_cart,'NJ')
 #-----------------------------------------------
 
 
@@ -107,6 +182,19 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def fizzbuzz():
+    x = 0
+    while x < 50: 
+        x = x + 1
+        if '.0' in str(x/3) and '.0' in str(x/5):
+            print('fizzbuzz') 
+        elif '.0' in str(x/3):
+            print('fizz')
+        elif '.0' in str(x/5):
+            print('buzz')
+        else:
+            print(x)   
+fizzbuzz()
 #-----------------------------------------------
 
 
@@ -146,4 +234,19 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+def chess_board(rows, columns):
+    i = 0
+    board = []
+    for r in range(rows):
+        row = []
+        for c in range(columns):
+            if (r + c) % 2 == 0:
+                row.append('O')
+            else: 
+                row.append('X')
+        board.append(row)
+    print(board)
+#Kristina helped me a lot with this. Shoutout!
+chess_board(8,8)
 #-----------------------------------------------

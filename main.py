@@ -212,7 +212,7 @@ def fizz_buzz():
             print('buzz')
         else:
             print(num)
-fizz_buzz()
+# fizz_buzz()
 
 #-----------------------------------------------
 
@@ -255,34 +255,63 @@ fizz_buzz()
 # Solution Goes Here - >
 
 # each row is its own list
-# each column is an element
+# each column is an element in the row lists
 
 def chessboard(rows, cols):
     # if first row -> start w/ O
     # else -> alternate row start w/ X and O
-    # for num of cols -> alternate X and O
-    # if first el is X -> next return O 
-    # if first el is O -> next return X 
+    # for num of cols -> alternate X and O ### 0 = 0 X = 1
+    # if given el is X -> next return O 
+    # if given el is O -> next return X 
 
-    # rows argument -> create X (empty) lists to be elements in overall / nested in BOARD list
-    # if rows = 3 -> create 3 new (empty) lists
-    
-    row_counter = 0
-    while row_counter <= rows:
-        # something
-        
-        row_counter += 1
+    # √ rows argument -> create X (empty) lists to be elements in overall / nested in BOARD list 
+    # √ if rows = 3 -> create 3 new (empty) lists 
 
-
+    counter_col = 0
+    counter_row = 0
+    board = []
+    board_rows = []
+    # board_col_els = ''
     i = 0
-    rows_list = []
-    cols_list = []
-    if rows_list == []:
-       rows_list.append("O")
-    elif rows_list[-1] == "O":
-        rows_list.append("X")
-    if cols_list == []:
-        cols_list.append
+    # create empty lists for number of rows and append to board list/array
+    while counter_row < rows:
+        board_rows.append([''])
+        counter_row += 1
+    board.append(board_rows)
+    # print(board_rows)
+    if board_rows[0] == '':
+        board_rows[0].append("O")
+    else:
+        board_rows[0].append("X")
+    print(board)
+
+    # for el in board: # of which there are 3 rn
+    #     while counter_col < cols:
+    #         #     board_rows[i].append("O")
+    #         #     counter_col += 1
+    #         #     i += 1
+    #         if board[i] == []:
+    #             board[board_rows[i]].append("O")
+    #         else:
+    #             board[board_rows[i]].append("X")
+    #         i += 1
+    #         counter_col += 1
+    # print(board)
+
+
+    # put this in a for loop; iterate through board_rows array/list
+    # print(board_rows)
+
+
+    # i = 0
+    # rows_list = []
+    # cols_list = []
+    # if rows_list == []:
+    #    rows_list.append("O")
+    # elif rows_list[-1] == "O":
+    #     rows_list.append("X")
+    # if cols_list == []:
+    #     cols_list.append
 
 chessboard(3,4)
 #-----------------------------------------------

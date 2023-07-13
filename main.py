@@ -26,11 +26,11 @@ def add_list(*num_list):
 
     return total
 
-# print(add_list(12))
-# print(add_list(5, 30, 19.3))
-# print(add_list(7, -12))
-# print(add_list('arrow','spear','sword'))
-# print(add_list())
+print(add_list(12))
+print(add_list(5, 30, 19.3))
+print(add_list(7, -12))
+print(add_list('arrow','spear','sword'))
+print(add_list())
 
 #-----------------------------------------------
 
@@ -55,8 +55,8 @@ def remove_ends(string):
 
     return string[1:-1]
 
-# print(remove_ends('Python is cool'))
-# print(remove_ends('yo'))
+print(remove_ends('Python is cool'))
+print(remove_ends('yo'))
 
 #-----------------------------------------------
 
@@ -89,10 +89,10 @@ def is_palindrome(string):
 
     return True
 
-# print(is_palindrome('SEI Rocks'))
-# print(is_palindrome('rotor'))
-# print(is_palindrome('A nut for a jar of tuna'))
-# print(is_palindrome(''))
+print(is_palindrome('SEI Rocks'))
+print(is_palindrome('rotor'))
+print(is_palindrome('A nut for a jar of tuna'))
+print(is_palindrome(''))
 
 #-----------------------------------------------
 
@@ -125,19 +125,20 @@ def is_prime(num):
     return True
 
 
+print(is_prime(2))
+print(is_prime(3))
+print(is_prime(4))
+print(is_prime(29))
+print(is_prime(200))
+
+
 prime = lambda num: num > 1 and all(num % i for i in range(2, num))
 
-# print(is_prime(2))
-# print(is_prime(3))
-# print(is_prime(4))
-# print(is_prime(29))
-# print(is_prime(200))
-
-# print(prime(2))
-# print(prime(3))
-# print(prime(4))
-# print(prime(29))
-# print(prime(200))
+print(prime(2))
+print(prime(3))
+print(prime(4))
+print(prime(29))
+print(prime(200))
 
 
 #-----------------------------------------------
@@ -197,7 +198,7 @@ def shop():
     state = "FL"
    
     total_cost = calculate_total_cost(state, shopping_cart)
-    # print(f"The total cost is ${total_cost}")
+    print(f"The total cost is ${total_cost}")
 
 
 if __name__ == "__main__":
@@ -277,6 +278,9 @@ if __name__ == "__main__":
 #         else:
 #             print(str(i))
 
+
+
+
 def fizz_buzz(num):
     if not isinstance(num, int):
         return f"{num} is not a number"
@@ -291,9 +295,11 @@ def fizz_buzz(num):
         elif i % 5 == 0:
             fizz_buzz_list.append("Buzz")
         else:
-            print(str(i))
+            fizz_buzz_list.append(str(i))
+
+    return ' '.join(fizz_buzz_list)
             
-# print(fizz_buzz(50))
+print(fizz_buzz(50))
 #-----------------------------------------------
 
 

@@ -14,6 +14,26 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+### resource used: https://www.geeksforgeeks.org/args-kwargs-python/
+
+def add_list(*nums):
+    sum = 0
+    if nums != '':
+        for num in nums:
+            if type(num) != int:
+                print('NaN')
+            else:
+                sum += num
+        print(sum)
+    else:
+        print('0')
+
+# add_list(1, 2, 3, 1)
+# add_list(1, 2, 3, 1, 10)
+# add_list()
+# add_list('catdog', 1, 1)
+
 #-----------------------------------------------
 
 
@@ -31,6 +51,25 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+def remove_ends(string):
+    if len(string) < 3:
+        print("")
+    else:
+        ### first attempt at solution:
+        # remove_first = string.replace(string[0], "")
+        # new_string = remove_first.replace(remove_first[-1], "")
+        # print(new_string)
+
+        ### better solution:
+        print(string[1:-1])
+        ### resource used: https://www.w3schools.com/python/gloss_python_string_slice.asp
+
+# remove_ends('hello')
+# remove_ends('a')
+# remove_ends('asdlfkajsdlf')
+
+
 #-----------------------------------------------
 
 
@@ -50,6 +89,23 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+def is_palindrome(string):
+    if len(string) <= 1:
+        print('true')
+    else:
+        reverse = string[::-1] # <-- string[start : end : step]
+        if reverse.lower().replace(" ","") == string.lower().replace(" ",""):
+            print('true')
+        else:
+            print('false')
+
+# is_palindrome('hello')
+# is_palindrome('a')
+# is_palindrome('RadAr')
+# is_palindrome('Ra dAr')
+# is_palindrome('A nut for a jar of tuna')
+
 #-----------------------------------------------
 
 
@@ -68,6 +124,26 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+
+# evenly divisible -> NOT a FLOAT -> int
+
+def is_prime(num):
+    int(num)
+    counter = 0
+    if num >1 and num % num == 0:
+        counter += 1
+        if num % counter == 0:
+            print('false')
+        else:
+            print('true')
+    else:
+        print('false')
+
+# is_prime(3)
+# is_prime(200)
+
+
+
 #-----------------------------------------------
 
 
@@ -79,17 +155,34 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
-
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def total_cost(cart, state):
+    subtotal = 0
+    if state in ['HI', 'AK', 'TX', 'FL']:
+        shipping_fee = 10
+    elif state in ['AL', 'MS', 'NV', 'IL']:
+        shipping_fee = 5
+    else:
+        shipping_fee = 0
+    for item in cart:
+        subtotal += item["price"]
+    total = subtotal + shipping_fee
+    print(total)
+
+# total_cost(shopping_cart, 'HI')
+# total_cost(shopping_cart, 'CT')
+# total_cost(shopping_cart, 'AL')
+
 #-----------------------------------------------
 
 
@@ -107,6 +200,20 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def fizz_buzz():
+    nums = range(1, 51, 1)
+    for num in nums:
+        if num % 3 == 0 and num % 5 == 0:
+            print('fizzbuzz')
+        elif num % 3 == 0:
+            print('fizz')
+        elif num % 5 == 0:
+            print('buzz')
+        else:
+            print(num)
+# fizz_buzz()
+
 #-----------------------------------------------
 
 
@@ -146,4 +253,63 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# each row is its own list
+# each column is an element in the row lists
+
+def chessboard(rows, cols):
+    # if first row -> start w/ O
+    # else -> alternate row start w/ X and O
+    # for num of cols -> alternate X and O ### 0 = 0 X = 1
+    # if given el is X -> next return O 
+    # if given el is O -> next return X 
+
+    # √ rows argument -> create X (empty) lists to be elements in overall / nested in BOARD list 
+    # √ if rows = 3 -> create 3 new (empty) lists 
+
+    counter_col = 0
+    counter_row = 0
+    board = []
+    board_rows = []
+    # board_col_els = ''
+    i = 0
+    # create empty lists for number of rows and append to board list/array
+    while counter_row < rows:
+        board_rows.append([])
+        counter_row += 1
+    board.append(board_rows)
+    # print(board_rows)
+    while counter_col < cols - 1:
+        if board_rows[i] == '':
+            board_rows[i] = "O"
+            i += 1
+        else:
+            board_rows[i] = "X"
+            i += 1
+        counter_col += 1
+    # if board_rows[0] == '': #<- WORKING
+    #     board_rows[0].append("O") #<- WORKING
+    # else: #<- WORKING
+    #     board_rows[0].append("X") #<- WORKING
+    print(board)
+
+    # for el in board: # of which there are 3 rn
+    #     while counter_col < cols:
+    #         #     board_rows[i].append("O")
+    #         #     counter_col += 1
+    #         #     i += 1
+    #         if board[i] == []:
+    #             board[board_rows[i]].append("O")
+    #         else:
+    #             board[board_rows[i]].append("X")
+    #         i += 1
+    #         counter_col += 1
+    # print(board)
+
+
+    # put this in a for loop; iterate through board_rows array/list
+
+
+
+chessboard(3,4)
 #-----------------------------------------------

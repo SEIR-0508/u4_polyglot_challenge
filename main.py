@@ -15,9 +15,16 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
-
-
-
+def add_list(*nums):
+    result = 0
+    if nums:
+        for num in nums:
+            if type(num) is int or type(num) is float:
+                result += num
+            else:
+                return 'NaN'
+    return result
+print(add_list(1,2,3))
 
 # Challenge 2: remove_ends
 
@@ -32,8 +39,9 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
-
-
+def remove_ends(string):
+    return string[1:-1]
+print(remove_ends('Led Zeppelin Rules'))
 
 # Challenge 3: is_palindrome
 
@@ -51,8 +59,16 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
-
-
+def is_palindrome(string):
+    string.lower()
+    string.replace(' ', '')
+    if len(string) == 1 or len(string) == 0:
+        return True
+    if string[0] == string[-1]:
+        is_palindrome(string[1 : -1])
+    else:
+        return False
+print(is_palindrome('A nut for a jar of tuna'))
 
 # Challenge 4: is_prime
 
@@ -69,8 +85,18 @@
 #-----------------------------------------------
 # Solution goes here ->
 #-----------------------------------------------
-
-
+import math
+def is_prime(num: int):
+    if num == 2 or num == 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    sqrt = int(math.sqrt(num))
+    for k in range(6, sqrt, 6):
+        if num % (k - 1) == 0 or num % (k + 1) == 0:
+            return False
+    return True
+print(is_prime(29996224275833))
 
 
 # Challenge 5: total_checkout_cost
@@ -87,10 +113,20 @@
 #   {"item": "tower fan", "price": 35 },
 # ]
 
-
 #-----------------------------------------------
 # Solution Goes Here ->
 #-----------------------------------------------
+def total_cost(shopping_cart, homestate):
+    total_cost = 0
+    for price in shopping_cart.values():
+        total_cost += price * 1.085
+    if homestate in ['HI','AL', 'TX', 'FL']:
+        total_cost += 10
+    elif homestate in ['AL', 'MS', 'NV']:
+        total_cost += 5
+    else:
+        pass
+    return total_cost
 
 
 # Challenge 6: fizz_buzz
@@ -108,8 +144,20 @@
 #-----------------------------------------------
 # Solution Goes Here ->
 #-----------------------------------------------
-
-
+def fizz_buzz(num):
+    if type(num) is not int:
+        return f'{num} is not a number'
+    else:
+        for i in range(num):
+            if i % 3 == 0 and i % 5 == 0:
+                print('FizzBuzz', end=' ')
+            elif i % 3 == 0:
+                print('Fizz', end=' ')
+            elif i % 5 == 0:
+                print('Buzz', end=' ')
+            else:
+                print(i, end=' ')
+# fizz_buzz(50)
 
 
 # Challenge 7 - Chessboard Creator
@@ -147,3 +195,14 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
+def chessboard(rows, cols):
+    board = []
+    if cols % 2 == 0:
+        row = ["O","X"] * int(cols / 2)
+    else:
+        row = ["O","X"] * int(cols / 2) + ["O"]
+    for r in range(rows):
+        board.append(list(row))
+        row.append(row.pop(0))
+    return board
+print(chessboard(3,7))

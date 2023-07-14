@@ -13,7 +13,20 @@
 # add("peanut_butter", "marshmellow_fluff") //=> NaN
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def add_list(*nums):
+    if not nums:
+        return 0
+    try:
+        return sum(nums)
+    except:
+        return 'Nan'
+
+# print(add_list(1, 2, 3))
+
+
+
+
 #-----------------------------------------------
 
 
@@ -30,7 +43,23 @@
 # remove_ends('a'); //=> "" (empty string)
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def remove_ends(string):
+    
+    if len(string) < 3:
+        return ''
+    else:
+        new_string = string[1:-1]
+        return new_string
+    
+    
+    
+# print(remove_ends('Led Zepplin rules'))
+        
+        
+
+
+
 #-----------------------------------------------
 
 
@@ -49,7 +78,23 @@
 # is_palindrome(''); //=> true
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def is_palindrome(string):
+    new_string = string.replace( ' ', '')
+    print(new_string)
+    rev_string = new_string[::-1]
+    print(rev_string)
+    if len(string) < 2:
+        return 'true'
+    elif new_string== rev_string:
+        return 'true as hell'
+    else:
+        return 'false'
+
+# print(is_palindrome('A nut for a jar of tuna'))
+
+
+
 #-----------------------------------------------
 
 
@@ -67,7 +112,18 @@
 # is_prime(200) //=> false
 
 #-----------------------------------------------
-# Solution goes here ->
+
+def is_prime(num):
+    if num <= 1:  # Numbers less than or equal to 1 are not prime
+        return False
+    # Check for divisibility from 2 to the square root of the number
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:  # If the number is divisible, it is not prime
+            return False
+    return True  
+
+# print(is_prime(8))
+
 #-----------------------------------------------
 
 
@@ -89,7 +145,31 @@
 
 
 #-----------------------------------------------
-# Solution Goes Here ->
+
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
+
+def calculate_cost(cart, homestate):
+        tax = 0.085
+        shipping_fee = 0
+
+        if homestate in ["HI", "AK", "TX", "FL"]:
+            shipping_fee = 10
+        elif homestate in ["AL", "MS", "NV", "IL"]:
+            shipping_fee = 5
+
+        subtotal = sum(item['price'] for item in cart) 
+        total_cost = subtotal + (subtotal * tax) + shipping_fee
+        return total_cost
+        
+        
+# print(calculate_cost(shopping_cart, 'IL'))
+
 #-----------------------------------------------
 
 
@@ -106,7 +186,44 @@
 # fizz_buzz(ham_sandwich) //=> "ham_sandwich is not a Number"
 
 #-----------------------------------------------
-# Solution Goes Here ->
+
+def fizz_buzz():
+
+    fizz_buzz_list = []
+    
+    for i in range(1, 51):
+        if i % 15 == 0:
+            i = 'FIZZBUZZ'
+            fizz_buzz_list.append(i)
+        elif i % 5 == 0:
+            i = 'BUZZ'
+            fizz_buzz_list.append(i)
+        elif i % 3 == 0:
+            i = "FIZZ"
+            fizz_buzz_list.append(i)
+        else:
+            fizz_buzz_list.append(i)
+    return fizz_buzz_list
+
+
+# print(fizz_buzz())
+
+def is_num_fizzbuzz(num):
+
+    if not isinstance(num, int):
+        return str(num) + " is not a number"
+    
+    if num % 3 == 0 and num % 5 == 0:
+        return str(num) + " FizzBuzz"
+    elif num % 3 == 0:
+        return str(num) + " Fizz"
+    elif num % 5 == 0:
+        return str(num) + " Buzz"
+    else:
+        return str(num)
+
+# print(is_num_fizzbuzz("carnitas tacos"))  
+
 #-----------------------------------------------
 
 
@@ -145,5 +262,26 @@
 
 
 #-----------------------------------------------
-# Solution Goes Here - >
+
+def maek_board(rows, columns):
+
+    board = []
+    is_white = True
+
+    for i in range(rows):
+        row = []
+        for j in range(columns):
+            if is_white:
+                row.append('O')
+            else:
+                row.append('X')
+            is_white = not is_white
+        board.append(row)
+        is_white = not is_white
+
+    return board
+
+print(maek_board(6, 4))
+
+
 #-----------------------------------------------

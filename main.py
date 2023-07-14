@@ -14,6 +14,20 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def add_list(num1, num2):
+     if num1 is None and num2 is None:
+          print(0)
+     elif isinstance(num1, int) and isinstance(num2, int):
+          return num1 + num2
+     else:
+            print('NaN')
+
+
+
+print(add_list(5, 3)) 
+   
+
+
 #-----------------------------------------------
 
 
@@ -31,6 +45,13 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def remove_ends(string):
+      if len(str(string)) >= 4:
+        print(string[1: -1:])
+      else:
+           return ' '
+            
+print(remove_ends('heyion'))
 #-----------------------------------------------
 
 
@@ -50,6 +71,15 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def is_palindrome(argument):
+      argumentt = argument.lower().replace(' ','')
+      if  argumentt == argumentt[::-1]:
+            print(True)
+      else:
+          print(False)
+
+
+print(is_palindrome('A nut for a jar of tuna'))
 #-----------------------------------------------
 
 
@@ -68,6 +98,15 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+def is_prime(integer):
+     int(integer)
+     if integer > 1 and integer % 2 != 0:
+          print(True)
+     else:
+          print(False)
+
+
+print(is_prime(3))    
 #-----------------------------------------------
 
 
@@ -90,6 +129,34 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def total_checkout_cost(tax_rate, homestate, shopping_cart):
+    shipping_fee = 0
+    if homestate in ['HI', 'AK', 'TX', 'FL']:
+        shipping_fee = 10
+    elif homestate in ['AL', 'MS', 'NV', 'IL']:
+        shipping_fee = 5
+    
+    total_cost = 0
+    for item in shopping_cart:
+        price = item['price']
+        price += price * tax_rate
+        total_cost += price
+    
+    total_cost += shipping_fee
+    return total_cost
+
+
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
+
+print(total_checkout_cost(0.085, 'HI', shopping_cart))
+
+
 #-----------------------------------------------
 
 
@@ -107,6 +174,24 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def fizz_buzz(number):
+    if not isinstance(number, int):
+        print(f'{number} is not a number')
+        return
+    
+    for i in range(1, number + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            print(f'{i} FizzBuzz')
+        elif i % 3 == 0:
+            print(f'{i} Fizz')
+        elif i % 5 == 0:
+            print(f'{i} Buzz')
+        else:
+            print(i)
+
+fizz_buzz(100)
+
+
 #-----------------------------------------------
 
 
@@ -146,4 +231,21 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def chess_board(row, column):
+    chessboard = []
+
+    for i in range(row):
+        row = []
+        for j in range(column):
+            if i + j % 2 == 0:
+                row.append('0')
+            else:
+                row.append('X')
+
+        chessboard.append(row)
+
+    return chessboard
+    
+print(chess_board(4,6))
+
 #-----------------------------------------------

@@ -14,6 +14,21 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# import math 
+
+# def add_list(*nums): # astric allows you to pass multiple arguments to function 
+#     if not nums:
+#         return 0
+#     total = 0 # initialized to 0 to store the sum mof the numbers 
+#     for num in nums:
+#         if isinstance(num, (int, float)): # isinstance checks if an object belongs to a specific class or type.
+#             total += num 
+#         else: 
+#             return 'NaN'    
+    
+#     return total 
+# print(add_list(1.5, 'b', 75.2367, 16))
 #-----------------------------------------------
 
 
@@ -31,6 +46,17 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# def remove_ends(string):
+#     if len(string) <= 3:
+#         return ''
+#     else:
+#         return string[1:-1]
+    
+
+
+# print(remove_ends('because'))
+
 #-----------------------------------------------
 
 
@@ -50,6 +76,19 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+
+# def is_palindrome(string):
+#     string = string.lower().replace(" ", "")  
+#     if len(string) <= 1:
+#         return True
+#     reversed_string = string[::-1]  
+#     return string == reversed_string   
+
+
+# print(is_palindrome('otto'))
+
+
+
 #-----------------------------------------------
 
 
@@ -68,6 +107,17 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+
+# def is_prime(integer):
+#     if integer < 2:
+#         return False
+    
+#     for i in range(2, int(integer ** 0.5)+1 ):
+#         if integer % i == 0:
+#             return False
+        
+#     return True     
+    
 #-----------------------------------------------
 
 
@@ -90,6 +140,27 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+# def total_cost(shopping_car, home_sttate):
+#     total_cost = 0
+
+#     for item in shopping_car:
+#         item_price = item["price"]
+#         sales_tax = item_price * 0.085 
+
+#         total_cost += item_price + sales_tax
+
+#     if home_sttate in ["HI", "AK", "TX", "FL"]:
+#         total_cost += 10 
+#     elif home_sttate in ["AL", "MS", "NV", "IL"]:
+#         total_cost += 5
+
+#     return total_cost 
+               
+    
+    
+
+
 #-----------------------------------------------
 
 
@@ -107,6 +178,22 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+
+def fizzbuzz():
+    if not isinstance(50, int):
+        return "is not a number"
+    for num in range(1, 51):
+        if num % 3 == 0 and num % 5 == 0:
+            print("FizzBuzz")
+        elif num % 3 == 0:
+            print("Fizz")
+        elif num % 5 == 0:
+            print("Buzz")
+        else:
+            print(num)
+
+fizzbuzz()
+
 #-----------------------------------------------
 
 
@@ -122,22 +209,22 @@
 
 # So chess_board(6,4) should return an array like this:
 
-[
-    ["O","X","O","X"],
-    ["X","O","X","O"],
-    ["O","X","O","X"],
-    ["X","O","X","O"],
-    ["O","X","O","X"],
-    ["X","O","X","O"]
-]
+# [
+#     ["O","X","O","X"],
+#     ["X","O","X","O"],
+#     ["O","X","O","X"],
+#     ["X","O","X","O"],
+#     ["O","X","O","X"],
+#     ["X","O","X","O"]
+# ]
 # And chess_board(3,7) should return this:
 
 
-[
-    ["O","X","O","X","O","X","O"],
-    ["X","O","X","O","X","O","X"],
-    ["O","X","O","X","O","X","O"]
-]
+# [
+#     ["O","X","O","X","O","X","O"],
+#     ["X","O","X","O","X","O","X"],
+#     ["O","X","O","X","O","X","O"]
+# ]
 
 #The white spaces should be represented by an: 'O' and the black an: 'X'
 

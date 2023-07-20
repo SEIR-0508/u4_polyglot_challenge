@@ -15,7 +15,16 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
-
+def add_list(*nums):
+    sum = 0
+    for num in nums:
+        if isinstance(num, (int, float)):
+            sum += num
+        else:
+            return "NaN"
+    return sum
+    
+print(add_list(1, 2, 3))
 
 
 
@@ -33,7 +42,13 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
+def remove_ends(strng_1):
+    if len(strng_1) < 3:
+        return ""
+    else:
+        return strng_1[1:-1]
 
+print(remove_ends('ABCDEFG'))
 
 # Challenge 3: is_palindrome
 
@@ -52,7 +67,16 @@
 # Solution Goes Here - >
 #-----------------------------------------------
 
-
+def is_palindrome(strng_2):
+    if len(strng_2) < 2:
+        return True
+    else: 
+        no_spaces = strng_2.replace(" ", "")
+        if no_spaces == no_spaces[::-1]:
+            return True
+        else:
+            return False
+print(is_palindrome('ROORS'))
 
 # Challenge 4: is_prime
 
@@ -70,8 +94,14 @@
 # Solution goes here ->
 #-----------------------------------------------
 
-
-
+def is_prime(num):
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+            break
+        else:
+            return True
+print(is_prime(7))
 
 # Challenge 5: total_checkout_cost
 
@@ -79,18 +109,46 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+# 
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
 #-----------------------------------------------
+
+def calculate_total_cost(shopping_cart, homestate):
+    sales_tax_rate = 0.085
+
+    shipping_fees = {
+        "HI": 10,
+        "AK": 10,
+        "TX": 10,
+        "FL": 10,
+        "AL": 5,
+        "MS": 5,
+        "NV": 5,
+        "IL": 5
+    }
+
+    total_cost = sum(item["price"] for item in shopping_cart) * (1 + sales_tax_rate)
+
+    if homestate in shipping_fees:
+        total_cost += shipping_fees[homestate]
+
+    return total_cost
+
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
+
+homestate = "IL"
+
+total_cost = calculate_total_cost(shopping_cart, homestate)
+print(f"Total cost with tax and shipping: ${total_cost:.2f}")
 
 
 # Challenge 6: fizz_buzz
@@ -109,7 +167,26 @@
 # Solution Goes Here ->
 #-----------------------------------------------
 
+def fizz_buzz(num):
+    my_list = []
+    if isinstance(num, (int, float)):
+        for i in range(1, num):
+            if i % 3 == 0 and i % 5 == 0:
+                my_list.append("FizzBuzz") 
+            elif i % 3 == 0:
+                my_list.append("Fizz") 
+            elif i % 5 == 0:
+                my_list.append("Buzz") 
+            else:
+                 my_list.append(i)
+        return my_list
+    else:
+        return "is not a number"
+    
+print(fizz_buzz(150))
 
+
+    
 
 
 # Challenge 7 - Chessboard Creator
@@ -147,3 +224,28 @@
 #-----------------------------------------------
 # Solution Goes Here - >
 #-----------------------------------------------
+
+def chess_board(rows, columns):
+    # Initialize an empty array 
+    board = []
+
+    # Loops through each row
+    for row in range(rows):
+        # Initialize a new row
+        new_row = []
+        # Determine the starting color
+        start_with_white = (row % 2 == 0)
+
+        # Loop through each column in the current row
+        for col in range(columns):
+            # Determine the color of the current cell based on the column position
+            cell_color = "O" if (col % 2 == 0) == start_with_white else "X"
+            # Add the cell to the current row
+            new_row.append(cell_color)
+
+        board.append(new_row)
+
+    return board
+
+print(chess_board(6, 4))
+print(chess_board(3, 7))
